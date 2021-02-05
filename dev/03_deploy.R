@@ -35,3 +35,6 @@ golem::add_dockerfile_shinyproxy()
 
 ## If you want to deploy to Heroku
 golem::add_dockerfile_heroku()
+
+## deploy app
+rsconnect::deployApp(appName = "hotshot_random", appFileManifest = "dev/app_manifest.txt", launch.browser = FALSE)
