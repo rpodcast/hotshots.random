@@ -57,14 +57,14 @@ mod_hotshot_picker_ui <- function(id){
     fluidRow(
       col_12(
         fluidRow(
-          col_6(
+          col_4(
             conditionalPanel(
               condition = "output.active_random",
               ns = ns,
               slickROutput(
                 ns("driver_slick_output"),
                 width = '60%',
-                height = '400px'
+                height = '230px'
               ),
               slickROutput(
                 ns("driver_text_output"),
@@ -73,16 +73,16 @@ mod_hotshot_picker_ui <- function(id){
               )
             )
           ),
-          col_6(
+          col_4(
             slickROutput(
               ns("car_slick_output"),
-              width = '90%',
-              height = '200px'
+              width = '60%',
+              height = '700px'
             ),
             slickROutput(
               ns("car_text_output"),
-              width = '90%',
-              height = '100px'
+              width = '60%',
+              height = '150px'
             )
           )
         )
@@ -209,6 +209,10 @@ mod_hotshot_picker_server <- function(input, output, session, default_time = 4){
 
   # reactive for driver slickR object
   driver_slick_obj <- reactive({
+    if (any(stringr::str_detect(driver_files, "^https"))) {
+      driver_files <- purrr::map(driver_files, ~htmltools::tags$img(src = .x))
+    }
+    
     x <- slickR(driver_files, slideId = 'driver_slick', height = 400, width = '100%')
 
     # set up style for text elemeent
@@ -278,13 +282,16 @@ mod_hotshot_picker_server <- function(input, output, session, default_time = 4){
     driver_index <- which(drivers %in% hs_driver) - 1
     driver_index_select(driver_index)
 
-    car_df <- gen_car_images(keep_df = hs_select)
-    car_files <- fs::path(app_sys("app", "www", "car_pics"), paste0(car_df$car_name, ".png"))
+    car_df <- gen_car_df(keep_df = hs_select)
+    car_files <- gen_car_images(car_df, external = FALSE)
+    if (any(stringr::str_detect(car_files, "^https"))) {
+      car_files <- purrr::map(car_files, ~htmltools::tags$img(src = .x))
+    }
 
     type_index <- which(car_df$car_name %in% hs_car) - 1
     car_index_select(type_index)
 
-    car_slick <- slickR(car_files, slideId = 'car_slick', height = 400, width = '100%')
+    car_slick <- slickR(car_files, slideId = 'car_slick', height = 200, width = '100%')
     car_text <- purrr::map(car_df$car_name, ~htmltools::tags$p(.x, style = htmltools::css(color = 'red', font.size = '40px'))) 
     car_text_dom <- slickR::slick_list(car_text)
     car_text_slick <- slickR(car_text_dom, slideId = 'car_text') + settings(arrows = FALSE)
