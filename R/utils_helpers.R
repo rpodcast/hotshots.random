@@ -7,31 +7,40 @@ gen_tidy_racers <- function(df) {
     return(res)
 }
 
-gen_driver_images <- function() {
+#' @import dplyr
+#' @noRd
+gen_driver_images <- function(external = FALSE) {
   data(hotshot_data)
   drivers <- names(hotshot_data$drivers)
-  res <- fs::path(app_sys("app", "www", "driver_pics"), paste0(drivers, ".png"))
+  if (external) {
+    res <- gen_tidy_racers(hotshot_data) %>%
+      select(driver_name, driver_img_url) %>%
+      distinct() %>%
+      pull(driver_img_url)
+  } else {
+    res <- fs::path(app_sys("app", "www", "driver_pics"), paste0(drivers, ".png"))
+  }
 
   return(res)
 }
 
 #' @import dplyr
 #' @noRd 
-gen_car_images <- function(keep_df = NULL) {
+gen_car_df <- function(keep_df = NULL) {
   df <- gen_tidy_racers(hotshot_data)
   #print(head(df))
-
+  
   if (!is.null(keep_df)) {
     # grab appropriate row
     keep_df <- dplyr::mutate(keep_df, keep = TRUE)
-
+    
     other_df <- df %>%
       dplyr::filter(driver_name != keep_df$driver_name) %>%
       dplyr::group_by(driver_name) %>%
       dplyr::sample_n(1) %>%
       dplyr::ungroup() %>%
       dplyr::mutate(keep = FALSE)
-
+    
     cars_df <- dplyr::bind_rows(keep_df, other_df) %>%
       dplyr::slice(sample(1:dplyr::n()))
     
@@ -42,7 +51,18 @@ gen_car_images <- function(keep_df = NULL) {
       dplyr::sample_n(1) %>%
       dplyr::ungroup()
   }
+  
   return(cars_df)
+}
+
+gen_car_images <- function(cars_df, external = FALSE) {
+  
+  if (external) {
+    res <- cars_df$car_img_url
+  } else {
+    res <- fs::path(app_sys("app", "www", "car_pics"), paste0("resized-", cars_df$car_name, ".png"))
+  }
+  return(res)
 }
 
 random_hotshot <- function(exclude_df = NULL, seed = NULL) {
@@ -109,6 +129,8 @@ gen_racer_table <- function(df = NULL, show_filter = TRUE) {
             )
           }),
         country = colDef(show = FALSE),
+        driver_img_url = colDef(show = FALSE),
+        car_img_url = colDef(show = FALSE),
         car_name = colDef(name = "Car"),
         type = colDef(name = "Type"),
         speed = colDef(
