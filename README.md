@@ -52,7 +52,8 @@ excellent packages used throughout the app, in addition to the
     [13](https://shinydevseries.com/post/episode-13-barrett2/), and
     [14](https://shinydevseries.com/post/episode-14-barrett3/) of the
     Shiny Developer Series), and RStudio CTO [Joe
-    Cheng](https://twitter.com/jcheng?lang=en) (guest on \[episode 18\]
+    Cheng](https://twitter.com/jcheng?lang=en) (guest on
+    [episode 18](https://r-podcast.org/episode/018-interviews-with-the-rstudio-team/)
     of the R-Podcast).
 
 ## Code of Conduct
