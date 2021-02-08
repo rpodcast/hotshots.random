@@ -314,6 +314,19 @@ hotshot_data <- list(
                 )
             )
         )
+    ),
+    tracks = list(
+        coast = c("marina", "ocean_world", "sea_view", "surf_city"),
+        desert = c("area_41", "boneyard", "casino_run", "downtown", "8_ball_highway"),
+        jungle = c("temple_drive", "royal_roadway", "dino_dash", "temple_ruins", "cargo_chaos"),
+        mountain = c("castle_funfair", "fossil_cave", "alpine_town", "ski_paradise", "frozen_freeway")
+    ),
+    grand_prix = list(
+        tour = c("marina", "area_41", "temple_drive", "castle_funfair"),
+        pro_circuit = c("boneyard", "fossil_cave", "ocean_world", "royal_roadway"),
+        racing_elite = c("dino_dash", "heated_highway", "alpine_town", "casino_run"),
+        hotshot = c("ski_paradise", "temple_ruins", "downtown", "sea_view"),
+        boss_level = c("8_ball_highway", "surf_city", "cargo_chaos", "frozen_freeway")
     )
 )
 
