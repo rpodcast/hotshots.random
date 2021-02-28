@@ -155,6 +155,9 @@ mod_hotshot_picker_server <- function(input, output, session, default_time = 4){
   driver_selected_show_rv <- reactiveVal(FALSE)
 
   driver_excluded_rv <- reactiveVal(NULL)
+  
+  exclude_previous_gp_cars <- reactiveVal(TRUE)
+  previous_gp_cars <- reactiveVal(c("eagle", "shadow", "t-66_super", "rosso", "diamond_back", "vector", "bullet", "eight_rock", "blaze", "furious", "el_toro"))
 
   # reactive values for timer
   timer <- reactiveVal(default_time)
@@ -261,7 +264,19 @@ mod_hotshot_picker_server <- function(input, output, session, default_time = 4){
     # randomly select driver and car
     # first ensure previous selections and/or excluded records are accounted for
     exclude_df <- NULL
-    exclude_tmp <- dplyr::bind_rows(driver_selected_rv(), driver_excluded_rv())
+    
+    if (exclude_previous_gp_cars()) {
+      tmp_df <- gen_tidy_racers(hotshot_data) %>%
+        filter(car_name %in% previous_gp_cars())
+      
+      driver_excluded_rv(tmp_df)
+      exclude_previous_gp_cars(FALSE)
+      
+      exclude_tmp <- dplyr::bind_rows(driver_selected_rv(), tmp_df)
+    } else {
+      exclude_tmp <- dplyr::bind_rows(driver_selected_rv(), driver_excluded_rv())
+    }
+    
 
     if (nrow(exclude_tmp) > 0) exclude_df <- exclude_tmp
 
@@ -385,7 +400,8 @@ mod_hotshot_picker_server <- function(input, output, session, default_time = 4){
   })
 
   output$excluded_driver_dt <- reactable::renderReactable({
-    req(hs_state())
+    #req(hs_state())
+    req(driver_excluded_rv())
     res <- gen_racer_table(driver_excluded_rv(), show_filter = FALSE)
     return(res)
   })
