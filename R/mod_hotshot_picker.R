@@ -156,8 +156,9 @@ mod_hotshot_picker_server <- function(input, output, session, default_time = 4){
 
   driver_excluded_rv <- reactiveVal(NULL)
   
-  exclude_previous_gp_cars <- reactiveVal(TRUE)
-  previous_gp_cars <- reactiveVal(c("eagle", "shadow", "t-66_super", "rosso", "diamond_back", "vector", "bullet", "eight_rock", "blaze", "furious", "el_toro", "athena", "sentinel"))
+  exclude_previous_gp_cars <- reactiveVal(FALSE)
+  #previous_gp_cars <- reactiveVal(c("eagle", "shadow", "t-66_super", "rosso", "diamond_back", "vector", "bullet", "eight_rock", "blaze", "furious", "el_toro", "athena", "sentinel"))
+  previous_gp_cars <- reactiveVal(NULL)
 
   # reactive values for timer
   timer <- reactiveVal(default_time)
