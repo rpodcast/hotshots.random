@@ -21,6 +21,12 @@ knitr::opts_chunk$set(
 
 Inside this fun project is a Shiny application to randomly select one of 32 cars available in the supremely awesome retro-inspired racing game [Hotshot Racing](https://www.curve-digital.com/en-us/games/featured/49/hotshot-racing)!  This is separate from the game itself, but I created the app to have some fun with my friends in the new Wimpy's World HotShot racing league :racing_car: .  Head to Martin Wimpress' [YouTube channel](https://www.youtube.com/channel/UC6D0aBP5pnWTGhQAvEmhUNw) to see the past and future gaming streams, all powered by Linux!
 
+* Grand Prix 1: [The Tour](https://www.youtube.com/watch?v=KpZXn3elnFU)
+* Grand Prix 2: [Pro Circuit](https://www.youtube.com/watch?v=ZhD5aIuTN8A)
+* Grand Prix 3: [Racing Elite](https://www.youtube.com/watch?v=I-b2W93fkEs)
+* Grand Prix 4: [HotShot!](https://www.youtube.com/watch?v=6QfHe62-70E)
+* Grand Prix 5: [Boss Level](https://www.youtube.com/watch?v=ow8A68ElPp0)
+
 ## Installation
 
 You can install the development version of the app as an R package wtih the following command in your R session

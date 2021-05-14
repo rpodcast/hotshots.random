@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# Hotshot Racing Random Driver & Car App\!
+# Hotshot Racing Random Driver & Car App!
 
 <!-- badges: start -->
 
@@ -12,12 +12,23 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 Inside this fun project is a Shiny application to randomly select one of
 32 cars available in the supremely awesome retro-inspired racing game
 [Hotshot
-Racing](https://www.curve-digital.com/en-us/games/featured/49/hotshot-racing)\!
+Racing](https://www.curve-digital.com/en-us/games/featured/49/hotshot-racing)!
 This is separate from the game itself, but I created the app to have
 some fun with my friends in the new Wimpy’s World HotShot racing league
 :racing\_car: . Head to Martin Wimpress’ [YouTube
 channel](https://www.youtube.com/channel/UC6D0aBP5pnWTGhQAvEmhUNw) to
-see the past and future gaming streams, all powered by Linux\!
+see the past and future gaming streams, all powered by Linux!
+
+-   Grand Prix 1: [The
+    Tour](https://www.youtube.com/watch?v=KpZXn3elnFU)
+-   Grand Prix 2: [Pro
+    Circuit](https://www.youtube.com/watch?v=ZhD5aIuTN8A)
+-   Grand Prix 3: [Racing
+    Elite](https://www.youtube.com/watch?v=I-b2W93fkEs)
+-   Grand Prix 4:
+    [HotShot!](https://www.youtube.com/watch?v=6QfHe62-70E)
+-   Grand Prix 5: [Boss
+    Level](https://www.youtube.com/watch?v=ow8A68ElPp0)
 
 ## Installation
 
@@ -34,17 +45,17 @@ I was able to create this fun application in large part to these
 excellent packages used throughout the app, in addition to the
 [Shiny](https://shiny.rstudio.com) package:
 
-  - [`{slickR}`](https://yonicd.github.io/slickR/): Wrapper around the
+-   [`{slickR}`](https://yonicd.github.io/slickR/): Wrapper around the
     \[slick\] JavaScript library producing a fully interactive image
     carousel. Authored by [Yoni Sidi](https://twitter.com/yoniceedee),
     who also appeared on episode 11 of the [Shiny Developer
     Series](https://shinydevseries.com/post/episode-11-sidi/)
-  - [`{reactable}`](https://glin.github.io/reactable/): Interactive data
+-   [`{reactable}`](https://glin.github.io/reactable/): Interactive data
     tables for R based on the [React
     Table](https://github.com/tannerlinsley/react-table) library for
     interactive tables. Authored by [Greg Lin](https://github.com/glin),
     software engineer at [RStudio](https://rstudio.com)
-  - [\`{bslib}](https://rstudio.github.io/bslib/): Create custom
+-   [\`{bslib}](https://rstudio.github.io/bslib/): Create custom
     Bootstrap themes directly from R. Authored by RStudio software
     engineers [Carson Sievert](https://twitter.com/cpsievert), [Barrett
     Schloerke](https://twitter.com/schloerke?lang=en) (previous guest on
@@ -52,8 +63,8 @@ excellent packages used throughout the app, in addition to the
     [13](https://shinydevseries.com/post/episode-13-barrett2/), and
     [14](https://shinydevseries.com/post/episode-14-barrett3/) of the
     Shiny Developer Series), and RStudio CTO [Joe
-    Cheng](https://twitter.com/jcheng?lang=en) (guest on
-    [episode 18](https://r-podcast.org/episode/018-interviews-with-the-rstudio-team/)
+    Cheng](https://twitter.com/jcheng?lang=en) (guest on [episode
+    18](https://r-podcast.org/episode/018-interviews-with-the-rstudio-team/)
     of the R-Podcast).
 
 ## Code of Conduct
