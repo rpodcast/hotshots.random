@@ -21,10 +21,11 @@ Imports:
     glouton (>= 0.0.0.9000),
     glue,
     reactable,
-    pkgload
+    pkgload,
+    markdown
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Depends: 
     R (>= 2.10)
 Remotes: 
